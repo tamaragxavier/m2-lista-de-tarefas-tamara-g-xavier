@@ -1,14 +1,14 @@
 const tasks = [
-  {title: "Comprar comida para o gato", type: "Urgente"},
-  {title: "Consertar Computador", type: "Importante"},
-  {title: "Beber água", type: "Normal"},
-  {title: "Enviar relatório trimestral", type: "Importante"},
-  {title: "Fazer exercícios físicos", type: "Normal"},
-  {title: "Agendar consulta médica", type: "Urgente"},
-  {title: "Ler pelo menos um capítulo de um livro", type: "Normal"},
-  {title: "Limpar a despensa", type: "Importante"},
-  {title: "Pagar a conta de energia", type: "Urgente"},
-  {title: "Assistir a um documentário interessante", type: "Normal"},
+  { title: "Comprar comida para o gato", type: "urgente" },
+  { title: "Consertar Computador", type: "importante" },
+  { title: "Beber água", type: "normal" },
+  { title: "Enviar relatório trimestral", type: "importante" },
+  { title: "Fazer exercícios físicos", type: "normal" },
+  { title: "Agendar consulta médica", type: "urgente" },
+  { title: "Ler pelo menos um capítulo de um livro", type: "normal" },
+  { title: "Limpar a despensa", type: "importante" },
+  { title: "Pagar a conta de energia", type: "urgente" },
+  { title: "Assistir a um documentário interessante", type: "normal" },
 ];
 
 function renderElements(tasks) {
@@ -34,11 +34,13 @@ function createTaskItem(task) {
   const listItemSpan = document.createElement("span");
   listItemSpan.classList.add("task-type");
 
-  if (task.type === "Urgente") {
+  if (task.type === "urgente") {
     listItemSpan.classList.add("span-urgent");
-  } else if (task.type === "Importante") {
+    
+  } else if (task.type === "importante") {
     listItemSpan.classList.add("span-important");
-  } else if (task.type === "Normal") {
+
+  } else if (task.type === "normal") {
     listItemSpan.classList.add("span-normal");
   }
 
@@ -55,5 +57,29 @@ function createTaskItem(task) {
 
   return listItem;
 }
+
+function addTask(event) {
+  event.preventDefault();
+
+  const titleInput = document.getElementById("input_title");
+  const prioritySelect = document.querySelector(".form__input--priority");
+
+  const title = titleInput.value.trim();
+  const type = prioritySelect.value.trim();
+
+  if (title && type) {
+    const newTask = { title, type };
+
+    tasks.push(newTask);
+
+    renderElements(tasks);
+
+    titleInput.value = "";
+    prioritySelect.value = "";
+  }
+}
+
+const addButton = document.querySelector(".form__button--add-task");
+addButton.addEventListener("click", addTask);
 
 renderElements(tasks);
