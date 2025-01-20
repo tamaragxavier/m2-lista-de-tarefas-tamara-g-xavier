@@ -36,10 +36,8 @@ function createTaskItem(task) {
 
   if (task.type === "urgente") {
     listItemSpan.classList.add("span-urgent");
-    
   } else if (task.type === "importante") {
     listItemSpan.classList.add("span-important");
-
   } else if (task.type === "normal") {
     listItemSpan.classList.add("span-normal");
   }
@@ -50,12 +48,31 @@ function createTaskItem(task) {
   const listItemButton = document.createElement("button");
   listItemButton.classList.add("task__button--remove-task");
 
+  listItemButton.addEventListener("click", function () {
+    removeTask(task); // Chama a função de remoção passando a tarefa
+  });
+
   listItemDiv.appendChild(listItemSpan);
   listItemDiv.appendChild(listItemParagraph);
   listItem.appendChild(listItemDiv);
   listItem.appendChild(listItemButton);
 
   return listItem;
+}
+
+function removeTask(taskToRemove) {
+  const taskIdentifier = taskToRemove.title + taskToRemove.type;
+
+  const taskIdentifiers = tasks.map(function (task) {
+    return task.title + task.type;
+  });
+
+  const taskIndex = taskIdentifiers.indexOf(taskIdentifier);
+
+  if (taskIndex > -1) {
+    tasks.splice(taskIndex, 1);
+    renderElements(tasks);
+  }
 }
 
 function addTask(event) {
