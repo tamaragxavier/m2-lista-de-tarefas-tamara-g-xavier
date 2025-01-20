@@ -3,22 +3,31 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
 }
 
 /* cabeçalho */
 
 .header__container {
+  background-color: #ffff;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .header__content {
-  background-color: #ffff;
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 58%;
   padding: 15px;
+ 
 }
 
 .header__title {
@@ -33,14 +42,18 @@ body {
   border: none;
   padding: 10px;
   border-radius: 5px;
-  width: 60%;
+  width: 40%;
 }
 
 /* conteúdo principal */
 
 .main__container {
-  width: 90%;
+  width: 80%;
   margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* formulario para adicionar nova task(tarefa) */
@@ -53,6 +66,10 @@ body {
   justify-content: center;
   flex-direction: column;
   border-radius: 5px;
+  width: 70%;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form__title.title2 {
@@ -64,6 +81,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 10px;
+  padding: 20px;
 }
 
 .form__input--text.input__box {
@@ -86,13 +104,14 @@ body {
 }
 
 .form__button--add-task {
-  background-color: #3b5bdb;
+   background-color: #3b5bdb;
   color: #ffff;
   padding: 10px;
   border-radius: 5px;
   border: none;
-  width: 98%;
-  margin: 5px;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* listagem de tasks (tarefas)*/
@@ -105,6 +124,10 @@ body {
   justify-content: center;
   flex-direction: column;
   border-radius: 5px;
+  width: 70%;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
@@ -116,7 +139,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  
 }
 .tasks__list {
   background-color: #ffff;
@@ -135,8 +157,8 @@ h2 {
   justify-content: space-between;
 }
 
-p{
-    margin-left: 15px;
+p {
+  margin-left: 15px;
 }
 
 .task__button--remove-task {
